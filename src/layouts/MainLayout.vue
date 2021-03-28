@@ -17,6 +17,7 @@
       </q-toolbar>
     </q-header>
 
+    <!-- Refactor to use component names instead of paths -->
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-1">
       <q-list>
         <q-item to="/" active-class="q-item-no-link-highlighting">
@@ -35,6 +36,22 @@
             <q-item-label>Group Subpay</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/timeline" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="update" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Group Log</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/affirmations" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="sentiment_satisfied_alt" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Motivation</q-item-label>
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -45,8 +62,6 @@
 </template>
 
 <script>
-// import EssentialLink from "components/EssentialLink.vue";
-
 const linksList = [
   {
     title: "Docs",
@@ -97,9 +112,8 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "MainLayout",
 
-  components: {
-    // EssentialLink,
-  },
+  // components: {
+  // },
 
   setup() {
     const leftDrawerOpen = ref(false);

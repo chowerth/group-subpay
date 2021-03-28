@@ -74,6 +74,17 @@ module.exports = configure(function (/* ctx */) {
       https: false,
       port: 8080,
       open: true, // opens browser window automatically
+      // vueDevtools: true,
+      proxy: {
+        // proxy all requests starting with /affirmationapi to https://www.affirmations.dev
+        "/affirmationapi": {
+          target: "https://www.affirmations.dev",
+          changeOrigin: true,
+          pathRewrite: {
+            "^/affirmationapi": "", // remove the /affirmationapi because the true endpoint is simply '/'
+          },
+        },
+      },
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework

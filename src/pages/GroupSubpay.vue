@@ -31,9 +31,10 @@
       </q-step>
 
       <q-step :name="4" title="Finish form" icon="add_comment">
-        Final form submission
+        Final form submission...do something special for this one
       </q-step>
 
+      <!-- Refactor this to component -->
       <template v-slot:navigation>
         <q-stepper-navigation>
           <q-btn

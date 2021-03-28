@@ -8,6 +8,14 @@ const routes = [
         path: "/groupsubpay",
         component: () => import("pages/GroupSubpay.vue"),
       },
+      {
+        path: "/timeline",
+        component: () => import("pages/Timeline.vue"),
+      },
+      {
+        path: "/affirmations",
+        component: () => import("pages/Affirmations.vue"),
+      },
     ],
   },
 

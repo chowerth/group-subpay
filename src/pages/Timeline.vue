@@ -1,0 +1,172 @@
+<template>
+  <q-page padding>
+    <div class="q-px-lg q-pb-md">
+      <q-timeline color="secondary">
+        <q-timeline-entry heading> Group Coordination </q-timeline-entry>
+
+        <q-timeline-entry
+          title="Group Subpay Start"
+          subtitle="March 21, 2021 Author: Chris"
+          icon="announcement"
+          color="accent"
+        >
+          <p>
+            I got some info on what the heck group subpays are and had some
+            motivation (and time) to do something so I created a
+            <a href="https://github.com/chowerth/group-subpay"
+              >group subpay repo</a
+            >
+            for us to use.
+            <i
+              >If you want access you need be added as a collaborator by
+              me--ping me on teams</i
+            >. We've all been stuck in mainframe land for a long time so I'm
+            sure it'll take time to re-learn modern dev practices. Feel free to
+            create any "test" pages you want on this site and add them to the
+            sidebar. No need to mess with personal git branches and merging and
+            all that stuff.
+          </p>
+          <p>
+            My idea is to build a toy frontend for group subpays using VueJS 3
+            and Quasar Framework, hook it up to some toy backend using AWS
+            Amplify, and actually host a live site to demo using Amplify hosting
+            (AWS Route 53) for the judges. If what I read is correct we can use
+            the feature branch protection capability to hide our site behind a
+            password we can share with the judges and each other. No need to use
+            your NW laptop and bang your head against the wall fighting proxies,
+            vpn's, firewalls, and annoyances like that.
+          </p>
+          <p>
+            We'll have all the
+            <a href="https://docs.amplify.aws/lib/q/platform/js"
+              >fancy bells and whistles using AWS Amplify</a
+            >
+            including a managed CICD pipeline and access to many of their
+            services (hosting, storage, API, Functions, and predictions being
+            the main ones I see us using). I looked at Netlify and a couple
+            other JAMStack services and decided I rather play with Amplify since
+            NW uses AWS anyway.
+          </p>
+        </q-timeline-entry>
+
+        <q-timeline-entry
+          title="Start Group Subpay UI and Forms"
+          subtitle="March 24-27, 2021 Author: Chris"
+          icon="code"
+        >
+          <p>
+            Started to create a dummy UI with Quasar and VueJS for when we build
+            the real UI. Testing out forms, navigation, and setting the
+            scaffolding for VeuJS best practices by modularizing components etc.
+            Saw the group subpay video Sujatha posted. Got some thoughts which
+            I'll list a few:
+          </p>
+          <ul>
+            <li>
+              Replicate IADT group subpays in Quasar -- what benefits will we
+              get if we make the switch to something modern?
+            </li>
+            <li>
+              Create some dummy pages invoking public apis for testing axios
+              calls with dynamic loading spinner -- reuse api service pattern.
+              This is going to be tricky for affirmations since this api is not
+              CORS enabled and thus my app's api dev calls will fail. See
+              possible CORS solutions.
+            </li>
+            <li>
+              Call a PALLM API from the frontend with axios -- we need an
+              external API endpoint and I don't know if any PALLM Api's are
+              external yet?
+            </li>
+            <li>
+              Thinking about spreadsheet upload for group subpays and having a
+              skeletal frame page UI
+            </li>
+            <li>
+              Add amplify hosting to quasar frontend to publish a live site
+            </li>
+            <li>
+              Add s3 storage to persist our frontend data...lots of
+              possibilities with this
+            </li>
+            <li>Test out Admin UI</li>
+            <li>
+              Add REST Api to our app and consume our group subpay data via
+              postman call simulating other services getting our data
+            </li>
+          </ul>
+          <p>
+            Possible CORS solutions...<br />
+            There are two main solutions: find a public reverse proxy or proxy
+            the requests with my own server. The quick workaround I found for
+            option one is using
+            <a href="https://cors-anywhere.herokuapp.com/corsdemo"
+              >this public reverse proxy</a
+            >. However, it has limitations you can read for yourself. After a
+            lot of research I found out that using webpack I can modify the
+            built-in quasar dev server to proxy requests I make to a dummy
+            endpoint. It can modify the request and forward it to the real
+            target endpoint. This means I can invoke any non-CORS enabled api
+            server by invoking a fake endpoint and writing a rule to detect and
+            transform it.
+            <a
+              href="https://forum.quasar-framework.org/topic/6704/enable-cors-to-bypass-to-different-ports-problem-with-api-requests/13"
+              >this thread</a
+            >
+            <a
+              href="https://webpack.js.org/configuration/dev-server/#devserverproxy"
+              >and this from webpack</a
+            >
+          </p>
+        </q-timeline-entry>
+
+        <q-timeline-entry
+          title="Create Timeline Log and API Call Setup with Axios"
+          subtitle="March 28, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            So I got the bright idea to actually put our log and changes here on
+            the live site because let's be honest...putting everything in one
+            place is way easier to consume and produce than logging onto our NW
+            laptops to check teams or sifting through github logs and commits.
+            Also, it's kind of motivating to see the progress you've made. If
+            you want to add icons to your posts just pick any
+            <a href="https://material.io/">material design icon</a>.
+          </p>
+          <p>
+            Set up a mock server using
+            <a href="https://my-json-server.typicode.com/">my json server</a>.
+            Here is our
+            <a href="https://my-json-server.typicode.com/chowerth/group-subpay"
+              >group subpay mock api server</a
+            >. To modify the data edit <code>db.json</code> file in the root of
+            the repo.
+          </p>
+          <p>Set up a team page with a brief description...</p>
+          <p>
+            Set up best practices scaffolding for Api services in Vue 3 and
+            Quasar. See official
+            <a href="https://github.com/axios/axios#example"
+              >axios documentation</a
+            >
+            for examples.
+          </p>
+          <p>
+            Potentially open up
+            <a
+              href="https://next.quasar.dev/quasar-cli/opening-dev-server-to-public#using-ngrok"
+              >dev server for quick collaboration</a
+            >?
+          </p>
+        </q-timeline-entry>
+      </q-timeline>
+    </div>
+  </q-page>
+</template>
+
+<script>
+export default {
+  name: "Timeline Log",
+};
+</script>
