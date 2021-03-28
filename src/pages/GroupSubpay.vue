@@ -13,7 +13,7 @@
         icon="assignment"
         :done="step > 1"
       >
-        A QForm will go here that will extract user input
+        <subpay-form-one></subpay-form-one>
       </q-step>
 
       <q-step
@@ -23,7 +23,7 @@
         icon="assignment"
         :done="step > 2"
       >
-        Another form for input collection...
+        <subpay-form-two></subpay-form-two>
       </q-step>
 
       <q-step :name="3" title="Disabled example" icon="assignment" disable>
@@ -56,16 +56,20 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import stepperStuff from "../services/useStepper";
+import SubpayFormOne from "../components/SubpayFormOne.vue";
+import SubpayFormTwo from "../components/SubpayFormTwo.vue";
 
 export default {
+  components: { SubpayFormOne, SubpayFormTwo },
   name: "GroupSubpay",
   setup() {
-    const lastStep = ref(4);
-    const step = ref(1);
-    function nextForm(QStepper) {
-      QStepper.next();
-    }
+    // This is the best practices way for modularization
+    // Your functionality lives in JS folder like "services" and you
+    // destructure the returned vars/objects/functions you need
+    // to explicitly tell this component what to return to the view
+    const { lastStep, step, nextForm } = stepperStuff();
+
     return {
       lastStep,
       step,
