@@ -7,6 +7,8 @@ function formOneStuff() {
   function onSubmit() {
     if (accept.value !== true) {
       $q.notify({
+        progress: true,
+        // progressClass: "notifyProgress",
         color: "red-5",
         textColor: "white",
         icon: "warning",
@@ -14,6 +16,8 @@ function formOneStuff() {
       });
     } else {
       $q.notify({
+        progress: true,
+        // progressClass: "notifyProgress",
         color: "green-4",
         textColor: "white",
         icon: "cloud_done",
@@ -38,6 +42,7 @@ function formTwoStuff() {
   function onSubmit() {
     if (accept.value !== true) {
       $q.notify({
+        progress: true,
         color: "red-5",
         textColor: "white",
         icon: "warning",
@@ -45,6 +50,7 @@ function formTwoStuff() {
       });
     } else {
       $q.notify({
+        progress: true,
         color: "green-4",
         textColor: "white",
         icon: "cloud_done",

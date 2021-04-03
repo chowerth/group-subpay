@@ -111,18 +111,19 @@
             transform it.
             <a
               href="https://forum.quasar-framework.org/topic/6704/enable-cors-to-bypass-to-different-ports-problem-with-api-requests/13"
-              >this thread</a
-            >
+              >See this thread </a
+            >and
             <a
               href="https://webpack.js.org/configuration/dev-server/#devserverproxy"
-              >and this from webpack</a
+            >
+              this from webpack</a
             >
           </p>
         </q-timeline-entry>
 
         <q-timeline-entry
           title="Create Timeline Log and API Call Setup with Axios"
-          subtitle="March 28, 2021 Author: Chris"
+          subtitle="March 28-29, 2021 Author: Chris"
           icon="build"
         >
           <p>
@@ -158,6 +159,71 @@
               href="https://next.quasar.dev/quasar-cli/opening-dev-server-to-public#using-ngrok"
               >dev server for quick collaboration</a
             >?
+          </p>
+          <p>
+            Perhaps switch to
+            <a href="https://quasarframework.github.io/quasar-ui-qmarkdown/docs"
+              >QMarkdown</a
+            >
+            for this timeline since typing this HTML is...meh
+          </p>
+          <p>
+            I really want to try GitHubt Actions out...maybe a research topic
+            for later
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="File picker and spreadsheets"
+          subtitle="March 30, 2021 Author: Chris"
+          icon="psychology"
+          color="positive"
+        >
+          <p>
+            Messed with Qcards and CSS/design a bit. I'm terrible at it but it's
+            fun.
+          </p>
+          <p>
+            Struggled reading a file from QFile and displaying it in a
+            component. Need to figure out how to use the File API. I think I
+            need to use a computed property on the file/filelist to parse
+            whenever the reactive object changes.
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Got QFile API Working and Promise Programming"
+          subtitle="April 1, 2021 Author: Chris"
+          icon="build"
+          color="accent"
+        >
+          <p>
+            I did some heavy research into async programming with promises and
+            figured out how to get the data from the QFile API the cool new
+            "modern" way using
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob/text"
+              >Blobs</a
+            >
+            and not the old FileReader way. Originally I thought I'd use a
+            computed property from Vue but that won't work since they rely on
+            getters and setters that must return a value. In promise based
+            programming you can only return a promise back to the caller which
+            won't trigger a computed property to give you a "value". After all,
+            in the async world, your computed property has no way to know when
+            your value will arrive so how can it "return". A great example
+            showcasing promises is
+            <a
+              href="https://plnkr.co/edit/K18o4Lp2jtUincjyG5wi?p=preview&preview"
+              >here</a
+            >. In the end the code is much simpler and more performant invoking
+            the async file api from the update event on the QFile component
+            whenever the model (the uploaded file) changes.
+          </p>
+          <p>
+            Need to commit code...but it's 3:30 AM and I'm too tired to polish
+            things up. Still need to switch this HTML stuff into Markup with
+            QMarkup for better readability. I should put completion statuses on
+            the list of goals I documented above. I should also create an
+            onCreate lifecycle hook for the affirmation API to pull a random
+            affirmation instead of just defaulting the value on page load.
           </p>
         </q-timeline-entry>
       </q-timeline>

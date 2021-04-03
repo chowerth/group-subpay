@@ -1,7 +1,8 @@
 import { ref } from "vue";
 import { affirmationApi } from "boot/axios";
 function affirmationStuff() {
-  const affirmation = ref("This is a nice message");
+  const affirmation = ref("You are an awesome person");
+  // Potentially create an ApiService: https://medium.com/@zitko/structuring-a-vue-project-authentication-87032e5bfe16
   function getAffirmation() {
     affirmationApi
       .get("/affirmationapi") // a nifty little hack

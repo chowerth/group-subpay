@@ -1,9 +1,17 @@
 <template>
   <div>
-    <q-btn @click="getAffirmation" color="primary" label="Get Affirmation" />
-    <p>
-      {{ affirmation }}
-    </p>
+    <q-card class="q-pa-sm">
+      <q-card-section class="text-h4 text-weight-bold text-center">
+        {{ affirmation }}
+      </q-card-section>
+      <q-card-actions>
+        <q-btn
+          @click="getAffirmation"
+          color="primary"
+          label="Get Affirmation"
+        />
+      </q-card-actions>
+    </q-card>
   </div>
 </template>
 

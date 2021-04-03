@@ -16,6 +16,10 @@ const routes = [
         path: "/affirmations",
         component: () => import("pages/Affirmations.vue"),
       },
+      {
+        path: "/filesandtables",
+        component: () => import("pages/FilesAndTables.vue"),
+      },
     ],
   },
 
