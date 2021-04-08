@@ -1,8 +1,17 @@
 <template>
   <div>
-    <!-- I could put this in a v-for loop to render but that would look too complicated -->
+    <!-- TODO: Create for loop to create components -->
     <child-component-1
-      childComponentMessage="This is a static message sent to child 1. This means I won't ever change."
+      staticMessage="This is a static message sent to child 1. This means I won't ever change."
+      :componentName="childrenNames[0]"
+      @child1Event="sendToChild2"
+      :childMessage="messageFromChild2"
+    >
+      {{ "This message goes in " + childrenNames[0] + " slot" }}
+    </child-component-1>
+
+    <child-component-1
+      staticMessage="This is a static message sent to child 1. This means I won't ever change."
       :componentName="childrenNames[0]"
       @child1Event="sendToChild2"
       :childMessage="messageFromChild2"
@@ -11,7 +20,7 @@
     </child-component-1>
 
     <child-component-2
-      childComponentMessage="This is a static message sent to child 2. This means I won't ever change."
+      staticMessage="This is a static message sent to child 2. This means I won't ever change."
       :componentName="childrenNames[1]"
       @child2Event="sendToChild1"
       :childMessage="messageFromChild1"

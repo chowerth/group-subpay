@@ -5,7 +5,7 @@
         {{ componentName }}
       </q-card-section>
       <q-card-section class="text-body1 text-center q-gutter-y-md">
-        {{ childComponentMessage }}
+        {{ staticMessage }}
       </q-card-section>
       <q-card-section class="text-body1 text-center q-gutter-y-md">
         <slot></slot>
@@ -13,7 +13,7 @@
       <q-card-section
         class="text-h6 text-weight-bold text-center q-gutter-y-md"
       >
-        {{ 'I sent "' + child1Message + '" to child2' }}
+        {{ 'I sent "' + sentMessage + '" to child2' }}
       </q-card-section>
       <q-card-section
         class="text-h6 text-weight-bold text-center q-gutter-y-md"
@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import { child1Stuff } from "../services/useChild1Service";
+import { childStuff } from "../services/useChildService";
 
 export default {
   name: "ChildComponent1",
   props: {
-    childComponentMessage: {
+    staticMessage: {
       type: String,
       required: true,
     },
@@ -50,24 +50,27 @@ export default {
       required: true,
     },
   },
-  emits: ["child1Event"],
+  // Unfortunately dynamic emits are not possible in Vue 3: https://github.com/vuejs/rfcs/issues/204
+  // Maybe I'll figure out a better way later
+  // emits: [componentName + "Event"],
   // you can destructure emit from context like { emit }.
   // Normally you would pass context and reference would be context.emit
   setup(props, { emit }) {
-    const { child1Message, sendMessage } = child1Stuff();
+    const { sentMessage, sendMessage } = childStuff();
 
     // Emit events from the component, not the JS service. This forces us to write a wrapper function
     // and return a promise from the JS function to emit values to the parent
     async function handleChild1Update() {
       try {
         const message = await sendMessage();
-        emit("child1Event", message);
+        // emit("child1Event", message);
+        emit(props.componentName + "Event", message); //get the prop to emit event
       } catch (err) {
         console.log(err);
       }
     }
 
-    return { child1Message, sendMessage, handleChild1Update };
+    return { sentMessage, sendMessage, handleChild1Update };
   },
 };
 </script>

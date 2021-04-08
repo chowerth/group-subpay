@@ -5,7 +5,7 @@
         {{ componentName }}
       </q-card-section>
       <q-card-section class="text-body1 text-center q-gutter-y-md">
-        {{ childComponentMessage }}
+        {{ staticMessage }}
       </q-card-section>
       <q-card-section class="text-body1 text-center q-gutter-y-md">
         <slot></slot>
@@ -13,7 +13,7 @@
       <q-card-section
         class="text-h6 text-weight-bold text-center q-gutter-y-md"
       >
-        {{ 'I sent "' + child2Message + '" to child1' }}
+        {{ 'I sent "' + sentMessage + '" to child1' }}
       </q-card-section>
       <q-card-section
         class="text-h6 text-weight-bold text-center q-gutter-y-md"
@@ -32,11 +32,11 @@
 </template>
 
 <script>
-import { child2Stuff } from "../services/useChild2Service";
+import { childStuff } from "../services/useChildService";
 export default {
   name: "ChildComponent2",
   props: {
-    childComponentMessage: {
+    staticMessage: {
       type: String,
       required: true,
     },
@@ -51,7 +51,7 @@ export default {
   },
   emits: ["child2Event"],
   setup(props, { emit }) {
-    const { child2Message, sendMessage } = child2Stuff();
+    const { sentMessage, sendMessage } = childStuff();
 
     async function handleChild2Update() {
       try {
@@ -62,7 +62,7 @@ export default {
       }
     }
 
-    return { child2Message, sendMessage, handleChild2Update };
+    return { sentMessage, sendMessage, handleChild2Update };
   },
 };
 </script>

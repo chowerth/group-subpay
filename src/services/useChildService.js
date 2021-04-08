@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { affirmationStuff } from "./useAffirmationApi";
-function child1Stuff() {
-  const child1Message = ref("");
+function childStuff() {
+  const sentMessage = ref("");
 
   const { getAffirmation } = affirmationStuff(); // notice how I don't need affirmation here from the service
 
@@ -11,11 +11,11 @@ function child1Stuff() {
     // Remember, since affirmation is a promise, we have no way to properly assign it outside of the promise structure
     // If we want to access child1Message in the calling function we must **return** (or resolve in Promise parlance)
     // the child1Message value
-    child1Message.value = await getAffirmation();
-    return child1Message.value;
+    sentMessage.value = await getAffirmation();
+    return sentMessage.value;
   }
 
-  return { child1Message, sendMessage };
+  return { sentMessage, sendMessage };
 }
 
-export { child1Stuff };
+export { childStuff };

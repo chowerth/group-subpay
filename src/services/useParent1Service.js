@@ -1,6 +1,6 @@
 import { ref } from "vue";
 function parent1Stuff() {
-  const childrenNames = ref(["Child1", "Child2"]);
+  const childrenNames = ref(["child1", "child2"]);
   const messageFromChild1 = ref("");
   const messageFromChild2 = ref("");
 
