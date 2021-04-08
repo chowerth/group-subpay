@@ -1,8 +1,14 @@
 <template>
   <div>
     <q-card class="q-pa-sm">
-      <q-card-section class="text-h4 text-weight-bold text-center">
+      <q-card-section
+        class="text-h4 text-weight-bold text-center q-gutter-y-md"
+      >
         {{ affirmation }}
+        <div v-if="!affirmation">
+          <q-skeleton type="text" />
+          <q-skeleton type="text" />
+        </div>
       </q-card-section>
       <q-card-actions>
         <q-btn
@@ -17,13 +23,27 @@
 
 <script>
 import { affirmationStuff } from "../services/useAffirmationApi";
+import { delayStuff } from "../services/useDelay";
 
 export default {
   name: "Affirmation",
   setup() {
-    // On load of component make Api call?
-    // Display button to fetch more
     const { affirmation, getAffirmation } = affirmationStuff();
+    const { setDelayFunc } = delayStuff();
+    // There is no onBeforeCreated or onCreated for the Composition API
+    // This is because inside the setup() method these events have already occurred
+    // Typically you would put api calls in there but now we can just invoke them!
+    setDelayFunc({
+      delayProbability: 1,
+      delayFunc: getAffirmation,
+    });
+    // I keep the code below to show an IIFE example: https://developer.mozilla.org/en-US/docs/Glossary/IIFE
+    // You can use this to grab the return value of an async function
+    // const mess = ref("");
+    // (async function () {
+    //   mess.value = await getAffirmation();
+    // })();
+
     return { affirmation, getAffirmation };
   },
 };

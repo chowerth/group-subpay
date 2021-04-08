@@ -7,7 +7,6 @@ function fileStuff() {
 
   // You cannot "return" a value from an async function
   function updateFile(newFile) {
-    // console.log(newFile);
     newFile
       // ?.text() // I should not need this since the API "guarantees" it gives me the updates file
       .text()

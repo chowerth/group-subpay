@@ -20,6 +20,10 @@ const routes = [
         path: "/filesandtables",
         component: () => import("pages/FilesAndTables.vue"),
       },
+      {
+        path: "/communicationpatterns",
+        component: () => import("pages/CommunicationPatterns.vue"),
+      },
     ],
   },
 

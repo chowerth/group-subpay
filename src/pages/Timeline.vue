@@ -176,7 +176,7 @@
           title="File picker and spreadsheets"
           subtitle="March 30, 2021 Author: Chris"
           icon="psychology"
-          color="positive"
+          color="negative"
         >
           <p>
             Messed with Qcards and CSS/design a bit. I'm terrible at it but it's
@@ -191,9 +191,9 @@
         </q-timeline-entry>
         <q-timeline-entry
           title="Got QFile API Working and Promise Programming"
-          subtitle="April 1, 2021 Author: Chris"
+          subtitle="April 1-2, 2021 Author: Chris"
           icon="build"
-          color="accent"
+          color="positive"
         >
           <p>
             I did some heavy research into async programming with promises and
@@ -224,6 +224,116 @@
             the list of goals I documented above. I should also create an
             onCreate lifecycle hook for the affirmation API to pull a random
             affirmation instead of just defaulting the value on page load.
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Lifecycle Hooks and Skeleton Templates"
+          subtitle="April 3-4, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Played with lifecycle hooks and api calls. Determined with the
+            composition api we can just invoke our data fetching API methods
+            directly within the setup() method since it's equivalent to the
+            "created" lifecycle hooks. Also experimented with skeleton templates
+            waiting on lengthy operations (such as a data fetching API call) to
+            display something to the user. Made a custom delayService to test
+            out skeletal templates.
+          </p>
+          <p>
+            I tried to get QMarkdown working but the author needs to bump the
+            required version of some software up to use it. Basically since I
+            wanted to test out bleeding edge Beta it's incompatible. See
+            <a
+              href="https://discord.com/channels/415874313728688138/551066279943995397/811622420364132352"
+              >this discord thread for more</a
+            >.
+          </p>
+          <p>
+            Experimented with communication between components. How do you get
+            two components to talk to each other? For parents to children you
+            use props (simple enough just like function calls). For child to
+            parent you should listen for events and use "emit" to emit events
+            from the child the parent listens to. For Vue3 you can also use
+            provide/inject to allow a parent to communicate with any of its
+            children (not just direct descendents). For sibling communication it
+            gets trickier. One way is to take both component's services and put
+            them in a new component that utilizes the data/methods of each. You
+            could also try using dynamic components with ":is" syntax and slots.
+          </p>
+          <p>
+            I created a dummy component I'm testing the different styles out
+            in...
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Business Gives  Group Subpay Demo"
+          subtitle="April 5, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Kyrstin Budd gave a demo of group subpays. Major paint points so
+            far:
+          </p>
+          <ul>
+            <li>On Group subpay screen default out "From Voucher"</li>
+            <li>They almost always click "clear amounts"</li>
+            <li>
+              They manually enter the amounts from the forms they receive for
+              each recipient
+            </li>
+            <li>
+              Printer defaults to portrait but you can't view it...needs to
+              default to landscape
+            </li>
+            <li>
+              Group subpays are literally scanned and mailed in...so each
+              company has their own. QC contract, name, source amounts, total
+              amounts, etc.
+            </li>
+            <li>
+              The main problem is there is no web app for group subpays! So
+              instead of using single subpays for 20 people they just scan it
+              and mail it in! So it seems we need to create a web app to support
+              group subpays.
+            </li>
+            <li>
+              Minimum information for subpay processors: Name, SSN, account #,
+              employee contribution or match or roth (source of money), amount
+              they want (dollar value), special instructions field
+            </li>
+          </ul>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Vue 3 Component Communication Patterns Testing"
+          subtitle="April 7, 2021 Author: Chris"
+          icon="question_answer"
+          color="positive"
+        >
+          <p>
+            I need to test out how components can communicate in the Vue 3
+            architecture. While this is just a POC I might as well learn the
+            correct way to do things. There are two main communication methods.
+            The first is parent/child (since the virtual DOM is a tree) and the
+            second is global store. For parents communicating with children you
+            pass in props to the child like you would pass in parameters to a
+            function. For children communicating with parents you emit events
+            the parent listens to on the child component and invoke a function
+            to handle event data. For sibling communication you can use the
+            parent as an intermediary and use child/parent communication or
+            global store. For unrelated components you'll have to use a global
+            store. You can use Vuex or provide/inject on the root component.
+          </p>
+          <p>
+            I should put reactive class properties for small screens for the
+            group subpay screen that switches to vertical stepper if the screen
+            is small.
+          </p>
+          <p>
+            I have basic parent -> child communication working and service
+            reuse. Now I need to do child -> parent by emitting events and also
+            do sibling communication by passing those messages to the siblings
+            from the parent.
           </p>
         </q-timeline-entry>
       </q-timeline>

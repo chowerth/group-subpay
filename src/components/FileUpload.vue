@@ -2,6 +2,9 @@
   <div>
     <q-card class="q-pa-sm">
       <q-card-section class="text-h6 text-weight-bold text-center">
+        <slot> </slot>
+      </q-card-section>
+      <q-card-section>
         {{ fileText }}
       </q-card-section>
       <q-card-actions>
