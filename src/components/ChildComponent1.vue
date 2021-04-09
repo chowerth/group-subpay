@@ -24,7 +24,7 @@
         <q-btn
           @click="handleChild1Update"
           color="primary"
-          label="Send Affirmation To Child 2"
+          label="Send Message To Child 2"
         />
       </q-card-actions>
     </q-card>

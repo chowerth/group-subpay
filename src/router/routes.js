@@ -17,6 +17,10 @@ const routes = [
         component: () => import("pages/Affirmations.vue"),
       },
       {
+        path: "/dadjokes",
+        component: () => import("pages/DadJokes.vue"),
+      },
+      {
         path: "/filesandtables",
         component: () => import("pages/FilesAndTables.vue"),
       },

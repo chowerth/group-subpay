@@ -52,6 +52,14 @@
             <q-item-label>Motivation</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/dadjokes" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="face" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Dad Jokes</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item to="/filesandtables" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="file_upload" />
