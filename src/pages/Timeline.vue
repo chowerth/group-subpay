@@ -306,7 +306,7 @@
         </q-timeline-entry>
         <q-timeline-entry
           title="Vue 3 Component Communication Patterns Testing"
-          subtitle="April 7, 2021 Author: Chris"
+          subtitle="April 7-8, 2021 Author: Chris"
           icon="question_answer"
           color="positive"
         >
@@ -330,10 +330,23 @@
             is small.
           </p>
           <p>
-            I have basic parent -> child communication working and service
-            reuse. Now I need to do child -> parent by emitting events and also
-            do sibling communication by passing those messages to the siblings
-            from the parent.
+            I have basic parent -> child and child -> parent communication
+            working and service reuse. I need to experiment with global store
+            patterns with provide/inject and vuex.
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Adding Amplify and Hosting"
+          subtitle="April 9, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Add amplify to the frontent and give it hosting. Look into the new
+            fancy Admin UI for adding team members. Keep things simple with
+            hosting and password protected branches for now until I do some more
+            research. I need to create a AMZ Linux2 docker image with quasar and
+            the necessary dependencies on it to speed up the build process in
+            the CICD pipeline a bit more.
           </p>
         </q-timeline-entry>
       </q-timeline>

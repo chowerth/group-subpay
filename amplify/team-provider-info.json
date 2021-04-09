@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-groupsubpay-dev-20840-authRole",
+            "UnauthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+            "UnauthRoleName": "amplify-groupsubpay-dev-20840-unauthRole",
+            "StackName": "amplify-groupsubpay-dev-20840",
+            "StackId": "arn:aws:cloudformation:us-east-2:781642778795:stack/amplify-groupsubpay-dev-20840/09528120-98fa-11eb-9d69-0ae9bf5eae56",
+            "AmplifyAppId": "du23tqvv025zb"
+        }
+    }
+}
