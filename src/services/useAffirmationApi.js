@@ -7,7 +7,9 @@ function affirmationStuff() {
   async function getAffirmation() {
     affirmation.value = ""; // Used to trigger the skeleton animation...remove if unwanted
     try {
-      const response = await affirmationApi.get("/affirmationapi"); // a nifty little hack
+      const response = await affirmationApi.get(
+        process.env.DEV ? "/affirmationapi" : "/"
+      ); // a nifty little hack
       console.log(response);
       affirmation.value = response.data.affirmation;
     } catch (error) {

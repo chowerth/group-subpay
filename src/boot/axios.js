@@ -19,7 +19,9 @@ const api = axios.create({
 const affirmationApi = axios.create({
   // baseURL: "https://www.affirmations.dev/",
   // baseURL: "https://cors-anywhere.herokuapp.com/https://www.affirmations.dev/",
-  baseURL: "http://localhost:8080/",
+  baseURL: process.env.DEV
+    ? "http://localhost:8080/"
+    : "https://www.affirmations.dev/",
 });
 const dadJokeApi = axios.create({
   baseURL: "https://icanhazdadjoke.com/",
