@@ -21,7 +21,7 @@ const affirmationApi = axios.create({
   // baseURL: "https://cors-anywhere.herokuapp.com/https://www.affirmations.dev/",
   baseURL: process.env.DEV
     ? "http://localhost:8080/"
-    : "https://www.affirmations.dev/",
+    : "http://localhost:4000/", // quasar server defaults to port 4000
 });
 const dadJokeApi = axios.create({
   baseURL: "https://icanhazdadjoke.com/",
