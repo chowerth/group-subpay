@@ -1,17 +1,15 @@
 {
-    "projectName": "groupsubpay",
-    "version": "3.0",
-    "frontend": "javascript",
-    "javascript": {
-        "framework": "none",
-        "config": {
-            "SourceDir": "src",
-            "DistributionDir": "dist/spa",
-            "BuildCommand": "quasar build",
-            "StartCommand": "quasar serve dist/spa"
-        }
-    },
-    "providers": [
-        "awscloudformation"
-    ]
+  "projectName": "groupsubpay",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "none",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "dist/spa",
+      "BuildCommand": "quasar build",
+      "StartCommand": "quasar serve --proxy myproxy.js dist/spa"
+    }
+  },
+  "providers": ["awscloudformation"]
 }
