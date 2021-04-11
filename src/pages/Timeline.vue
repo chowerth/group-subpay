@@ -337,7 +337,7 @@
         </q-timeline-entry>
         <q-timeline-entry
           title="Adding Amplify and Hosting"
-          subtitle="April 9, 2021 Author: Chris"
+          subtitle="April 9-10, 2021 Author: Chris"
           icon="build"
         >
           <p>
@@ -346,7 +346,37 @@
             hosting and password protected branches for now until I do some more
             research. I need to create a AMZ Linux2 docker image with quasar and
             the necessary dependencies on it to speed up the build process in
-            the CICD pipeline a bit more.
+            the CICD pipeline a bit more. If I can shave 20 seconds off build
+            time I save a penny per deployment!
+          </p>
+          <p>
+            Add a REST API with proxy integration and use a lambda function to
+            attempt to get around the non CORS enabled affirmations api. Also
+            experiment more with lambda functions and the rest api interface
+            amplify provides. I pushed a helloworld api and lambda function up
+            to amplify and tested it with postman. Running it locally on the dev
+            server client side and it seems to work too. I even tested testing
+            lambda functions locally with 'amplify mock function resolvcors' and
+            it worked! That is pretty dang nifty. I don't have to push my lambda
+            function resources to the cloud to test them. However, if my lambda
+            uses layers to get nodeJS libraries (like axios) I cannot use
+            amplify mock (hopefully in the future they will implement this
+            feature). So for now I'm restricted to testing in the lambda
+            functions console on AWS.
+          </p>
+          <p>
+            Follow
+            <a
+              href="https://docs.amplify.aws/guides/functions/configuring-lambda/q/platform/js#n1-configuring-secret-values"
+              >this guide</a
+            >
+            to set configuration values for my lambda (like allowed hosts for
+            CORS instead of just *).
+          </p>
+          <p>
+            Ok I finally got the affirmation API freaking working (I think). I
+            need to do cleanup on the code but that'll be for another day. I
+            really need to commit this stuff now. I'm terrible at doing that.
           </p>
         </q-timeline-entry>
       </q-timeline>
@@ -356,6 +386,6 @@
 
 <script>
 export default {
-  name: "Timeline Log",
+  name: "Timeline Log"
 };
 </script>

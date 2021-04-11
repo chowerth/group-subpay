@@ -21,7 +21,8 @@ const affirmationApi = axios.create({
   // baseURL: "https://cors-anywhere.herokuapp.com/https://www.affirmations.dev/",
   baseURL: process.env.DEV
     ? "http://localhost:8080/"
-    : "https://main.du23tqvv025zb.amplifyapp.com/", // hardcode the live URL for now
+    : "https://www.affirmations.dev/",
+  // : "https://main.du23tqvv025zb.amplifyapp.com/", // hardcode the live URL for now
   // "http://localhost:4000/" quasar server defaults to port 4000
 });
 const dadJokeApi = axios.create({
@@ -31,12 +32,10 @@ const dadJokeApi = axios.create({
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
-
-  app.config.globalProperties.$axios = axios;
+  // app.config.globalProperties.$axios = axios;
   // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
   //       so you won't necessarily have to import axios in each vue file
-
-  app.config.globalProperties.$api = api;
+  // app.config.globalProperties.$api = api;
   // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
   //       so you can easily perform requests against your app's API
 });

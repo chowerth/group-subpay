@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/endpoint",
+            "lambdaFunction": "resolvecors",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "corsapi",
+    "apiName": "corsapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "resolvecors"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-groupsubpay-dev-20840-authRole",
+        "unAuthRoleName": "amplify-groupsubpay-dev-20840-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "resolvecors",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "d2fb113b"
+}

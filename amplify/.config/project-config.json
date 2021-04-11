@@ -8,7 +8,7 @@
       "SourceDir": "src",
       "DistributionDir": "dist/spa",
       "BuildCommand": "quasar build",
-      "StartCommand": "quasar serve --proxy myproxy.js dist/spa"
+      "StartCommand": "quasar serve dist/spa"
     }
   },
   "providers": ["awscloudformation"]

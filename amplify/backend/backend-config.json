@@ -1,1 +1,56 @@
-{}
+{
+    "function": {
+        "resolvecors": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "axioslayer",
+                    "attributes": [
+                        "Arn"
+                    ]
+                }
+            ]
+        },
+        "axioslayer": {
+            "runtimes": [
+                {
+                    "value": "nodejs",
+                    "name": "NodeJS",
+                    "layerExecutablePath": "nodejs\\node_modules",
+                    "cloudTemplateValue": "nodejs12.x"
+                }
+            ],
+            "layerVersionMap": {
+                "1": {
+                    "permissions": [
+                        {
+                            "type": "private"
+                        }
+                    ]
+                }
+            },
+            "providerPlugin": "awscloudformation",
+            "service": "LambdaLayer",
+            "build": true
+        }
+    },
+    "api": {
+        "corsapi": {
+            "service": "API Gateway",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "resolvecors",
+                    "attributes": [
+                        "Name",
+                        "Arn"
+                    ]
+                }
+            ]
+        }
+    }
+}
