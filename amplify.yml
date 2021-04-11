@@ -8,8 +8,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install
         - yarn global add @quasar/cli
+        - yarn install --frozen-lockfile
+        # https://stackoverflow.com/questions/58482655/what-is-the-closest-to-npm-ci-in-yarn
     # IMPORTANT - Please verify your build commands
     build:
       commands:
