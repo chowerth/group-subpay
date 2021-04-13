@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { API } from "boot/amplify";
 function lambdaStuff() {
   const apiName = "corsapi";
-  const lambdaResp = ref(Object);
+  const lambdaResp = ref("");
   // Potentially create an ApiService: https://medium.com/@zitko/structuring-a-vue-project-authentication-87032e5bfe16
   // Potentially pass in a reactive variable and assign to that as opposed to always using lambdaResp?
   async function getLambdaResp() {

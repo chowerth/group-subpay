@@ -3,6 +3,50 @@
 // Use named exports to facilitate this
 import { ref } from "vue";
 import { useQuasar } from "quasar";
+
+function groupSubpayStuff() {
+  // group subpays are arrays of subpay objects
+  // a subpay object has an employer object and an employee list
+  // an amployee list contains details of every employee under that employer
+  const groupSubpay = ref([
+    {
+      company: "Nationwide",
+      address: "One Nationwide Plaza Columbus, OH"
+    },
+    [
+      {
+        firstName: "Chris",
+        lastName: "Howerth",
+        SSN: "123456789",
+        source: "Employee contribution",
+        amount: 1000
+      },
+      {
+        firstName: "Chris",
+        lastName: "Howerth",
+        SSN: "123456789",
+        source: "Employer contribution",
+        amount: 300
+      },
+      {
+        firstName: "Tony",
+        lastName: "Thephason",
+        SSN: "112233445",
+        source: "Employee contribution",
+        amount: 2500
+      },
+      {
+        firstName: "Tony",
+        lastName: "Thephason",
+        SSN: "112233445",
+        source: "Employer contribution",
+        amount: 650
+      }
+    ]
+  ]);
+  return { groupSubpay };
+}
+
 function formOneStuff() {
   function onSubmit() {
     if (accept.value !== true) {
@@ -12,7 +56,7 @@ function formOneStuff() {
         color: "red-5",
         textColor: "white",
         icon: "warning",
-        message: "You need to accept the license and terms first",
+        message: "You need to accept the license and terms first"
       });
     } else {
       $q.notify({
@@ -21,7 +65,7 @@ function formOneStuff() {
         color: "green-4",
         textColor: "white",
         icon: "cloud_done",
-        message: "Submitted",
+        message: "Submitted"
       });
     }
   }
@@ -46,7 +90,7 @@ function formTwoStuff() {
         color: "red-5",
         textColor: "white",
         icon: "warning",
-        message: "You need to accept the license and terms first",
+        message: "You need to accept the license and terms first"
       });
     } else {
       $q.notify({
@@ -54,7 +98,7 @@ function formTwoStuff() {
         color: "green-4",
         textColor: "white",
         icon: "cloud_done",
-        message: "Submitted",
+        message: "Submitted"
       });
     }
   }
@@ -69,4 +113,4 @@ function formTwoStuff() {
   return { brightness, accept, onSubmit, onReset };
 }
 
-export { formOneStuff, formTwoStuff };
+export { formOneStuff, formTwoStuff, groupSubpayStuff };

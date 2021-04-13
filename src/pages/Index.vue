@@ -28,7 +28,7 @@
             src="~assets/group-subpay-shudder-logo.png"
           />
           <q-card-section class="q-pt-md">
-            <div class="text-h3">Group Subpay</div>
+            <div class="text-h3">Group Subpay Shudder</div>
             <div class="text-body1">
               Nationwide Hackathon Team
             </div>
