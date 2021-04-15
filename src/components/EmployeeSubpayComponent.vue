@@ -1,7 +1,8 @@
 <template>
-  <q-form class="q-gutter-md">
-    <!-- TODO: put 'refs' on each input -->
+  <!-- TODO: put 'refs' on each input -->
+  <div class="row">
     <q-input
+      class="col"
       outlined
       clearable
       hide-bottom-space
@@ -17,6 +18,7 @@
     </q-input>
 
     <q-input
+      class="col"
       outlined
       clearable
       hide-bottom-space
@@ -35,6 +37,7 @@
 
     <!-- TODO: Play around with select more...it has a TON of options -->
     <q-select
+      class="col"
       outlined
       v-model="employeeInfo.moneySource"
       :options="moneySourceOptions"
@@ -46,7 +49,9 @@
     </q-select>
 
     <q-input
+      class="col"
       outlined
+      clearable
       v-model="employeeInfo.amount"
       label="Amount Of Money For Source"
       mask="#.##"
@@ -57,7 +62,7 @@
         <q-icon name="attach_money" color="primary" />
       </template>
     </q-input>
-  </q-form>
+  </div>
 </template>
 
 <script>

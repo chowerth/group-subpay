@@ -10,6 +10,7 @@ frontend:
       commands:
         - yarn global add @quasar/cli
         - yarn install --frozen-lockfile
+        - quasar clean
         # https://stackoverflow.com/questions/58482655/what-is-the-closest-to-npm-ci-in-yarn
     # IMPORTANT - Please verify your build commands
     build:

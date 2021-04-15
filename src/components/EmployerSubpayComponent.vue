@@ -1,6 +1,6 @@
 <template>
-  <q-form class="q-gutter-md">
-    <!-- Look into using the mask prop as well -->
+  <!-- Look into using the mask prop as well -->
+  <div>
     <q-input
       outlined
       clearable
@@ -30,7 +30,7 @@
         <q-icon name="place" color="primary" />
       </template>
     </q-input>
-  </q-form>
+  </div>
 </template>
 
 <script>

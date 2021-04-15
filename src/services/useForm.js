@@ -4,6 +4,12 @@
 import { ref } from "vue";
 import { useQuasar } from "quasar";
 
+function groupSubpayStuff() {
+  const numberOfSubpays = ref(1);
+
+  return { numberOfSubpays };
+}
+
 function employerSubpayStuff() {
   const employerInfo = ref({
     name: "Nationwide",
@@ -147,4 +153,10 @@ function formTwoStuff() {
   return { brightness, accept, onSubmit, onReset };
 }
 
-export { formOneStuff, formTwoStuff, employerSubpayStuff, employeeSubpayStuff };
+export {
+  formOneStuff,
+  formTwoStuff,
+  employerSubpayStuff,
+  employeeSubpayStuff,
+  groupSubpayStuff
+};
