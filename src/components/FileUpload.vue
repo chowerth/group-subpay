@@ -5,7 +5,7 @@
         <slot> </slot>
       </q-card-section>
       <q-card-section>
-        {{ fileText }}
+        <pre>{{ fileText }}</pre>
       </q-card-section>
       <q-card-actions>
         <q-file
@@ -33,6 +33,6 @@ export default {
   setup() {
     const { file, onRejected, fileText, updateFile } = fileStuff();
     return { file, onRejected, fileText, updateFile };
-  },
+  }
 };
 </script>

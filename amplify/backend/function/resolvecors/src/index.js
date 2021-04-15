@@ -13,7 +13,7 @@ const axios = require("axios"); // for making api calls
 
 exports.handler = async (event, context) => {
   // For now just hardcode "get" but make more flexible in future
-  console.log("Event: ", event);
+  // console.log("Event: ", event);
   let myResponse = null;
   let myHeaders = null;
   let proxyEndpoint = null;
@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
     console.log("My Headers: ", myHeaders);
     const apiresp = await axios.get(proxyEndpoint, { headers: myHeaders });
     myResponse = apiresp.data;
-    console.log("API response1: ", apiresp);
+    // console.log("API response1: ", apiresp);
   } catch (error) {
     if (error.response) {
       // The request was made and the server responded with a status code
@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
       // Something happened in setting up the request that triggered an Error
       console.log("Something bad happened!");
       if (proxyEndpoint == undefined) {
-        myResponse = { message: "Please add your api as a path parameter" };
+        myResponse = { message: "Pass your URL in body.endpoint" };
       } else if (myHeaders == undefined) {
         myResponse = {
           message: "Perhaps you needed to pass headers in your request?"

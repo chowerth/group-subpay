@@ -337,7 +337,7 @@
         </q-timeline-entry>
         <q-timeline-entry
           title="Adding Amplify and Hosting"
-          subtitle="April 9-10, 2021 Author: Chris"
+          subtitle="April 9-11, 2021 Author: Chris"
           icon="build"
         >
           <p>
@@ -377,6 +377,18 @@
             Ok I finally got the affirmation API freaking working (I think). I
             need to do cleanup on the code but that'll be for another day. I
             really need to commit this stuff now. I'm terrible at doing that.
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Modify Main Page"
+          subtitle="April 13-14, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Spent way longer than I should have trying to make the front page
+            "pretty". Gonna switch into getting the service and component
+            working for the real group subpay UI. I should use icongenie to
+            generate all the sizes for the group subpay logo.
           </p>
         </q-timeline-entry>
       </q-timeline>

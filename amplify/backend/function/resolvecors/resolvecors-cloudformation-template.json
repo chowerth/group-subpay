@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-groupsubpay-dev-20840-deployment",
-					"S3Key": "amplify-builds/resolvecors-34596e696d6847426d61-build.zip"
+					"S3Key": "amplify-builds/resolvecors-785a6335384569734132-build.zip"
 				}
 			}
 		},

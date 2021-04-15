@@ -4,47 +4,81 @@
 import { ref } from "vue";
 import { useQuasar } from "quasar";
 
-function groupSubpayStuff() {
-  // group subpays are arrays of subpay objects
-  // a subpay object has an employer object and an employee list
-  // an amployee list contains details of every employee under that employer
-  const groupSubpay = ref([
-    {
-      company: "Nationwide",
-      address: "One Nationwide Plaza Columbus, OH"
-    },
-    [
-      {
-        firstName: "Chris",
-        lastName: "Howerth",
-        SSN: "123456789",
-        source: "Employee contribution",
-        amount: 1000
-      },
-      {
-        firstName: "Chris",
-        lastName: "Howerth",
-        SSN: "123456789",
-        source: "Employer contribution",
-        amount: 300
-      },
-      {
-        firstName: "Tony",
-        lastName: "Thephason",
-        SSN: "112233445",
-        source: "Employee contribution",
-        amount: 2500
-      },
-      {
-        firstName: "Tony",
-        lastName: "Thephason",
-        SSN: "112233445",
-        source: "Employer contribution",
-        amount: 650
-      }
-    ]
-  ]);
-  return { groupSubpay };
+function employerSubpayStuff() {
+  const employerInfo = ref({
+    name: "Nationwide",
+    address: "One Nationwide Plaza Columbus, OH"
+  });
+
+  const employerNameRules = [
+    val => (val && val.length > 0) || "Please enter a valid employer"
+  ];
+  const employerAddressRules = [
+    val => (val && val.length > 0) || "Please enter a valid employer address"
+  ];
+
+  function buildEmployer(employerObject) {
+    const { name, address } = employerObject;
+    employerInfo.value.name = name;
+    employerInfo.value.address = address;
+    return employerInfo;
+  }
+  return {
+    employerInfo,
+    employerNameRules,
+    employerAddressRules,
+    buildEmployer
+  };
+}
+
+function employeeSubpayStuff() {
+  const employeeInfo = ref({
+    fullName: "Chris L. Howerth",
+    identifier: "12-345-6789",
+    moneySource: ["Employer Contribution"],
+    amount: 250
+  });
+
+  // TODO: fix this so they are required to enter at least 2 substrings (first, last) but no more than 3 (middle)
+  // use regular expression?
+  // let re = \d{2}-\d{3}-\d{4}\
+  const employeeNameRules = [
+    val => (val && val.length > 0) || "Please enter an employee name"
+  ];
+
+  // TODO: fix so validates 3 groups of numbers separated by -
+  // use regular expression?
+  const employeeIdentifierRules = [
+    val =>
+      (val && val.length === 11) ||
+      `The SSN must be 9 digits. It is ${val.length}`
+    // val =>
+    //   /\d{2}-\d{3}-\d{4}/.test(val) ||
+    //   `The SSN does not have the correct format. It is ${val}`
+  ];
+
+  const moneySourceOptions = [
+    "Employer Contribution",
+    "Employee Contribution",
+    "Traditional IRA",
+    "ROTH IRA"
+  ];
+
+  function buildEmployee(employeeObject) {
+    const { fullName, identifier, moneySource, amount } = employeeObject;
+    employeeInfo.value.fullName = fullName;
+    employeeInfo.value.identifier = identifier;
+    employeeInfo.value.moneySource = moneySource;
+    employeeInfo.value.amount = amount;
+    return emploeeInfo;
+  }
+  return {
+    employeeInfo,
+    employeeNameRules,
+    employeeIdentifierRules,
+    moneySourceOptions,
+    buildEmployee
+  };
 }
 
 function formOneStuff() {
@@ -113,4 +147,4 @@ function formTwoStuff() {
   return { brightness, accept, onSubmit, onReset };
 }
 
-export { formOneStuff, formTwoStuff, groupSubpayStuff };
+export { formOneStuff, formTwoStuff, employerSubpayStuff, employeeSubpayStuff };
