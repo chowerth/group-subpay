@@ -2,7 +2,7 @@
   <!-- TODO: put 'refs' on each input -->
   <div class="row">
     <q-input
-      class="col"
+      class="col-xs-12 col-sm-3"
       outlined
       clearable
       hide-bottom-space
@@ -18,7 +18,7 @@
     </q-input>
 
     <q-input
-      class="col"
+      class="col-xs-12 col-sm-3"
       outlined
       clearable
       hide-bottom-space
@@ -37,7 +37,7 @@
 
     <!-- TODO: Play around with select more...it has a TON of options -->
     <q-select
-      class="col"
+      class="col-xs-12 col-sm-3"
       outlined
       v-model="employeeInfo.moneySource"
       :options="moneySourceOptions"
@@ -49,7 +49,7 @@
     </q-select>
 
     <q-input
-      class="col"
+      class="col-xs-12 col-sm-3"
       outlined
       clearable
       v-model="employeeInfo.amount"
@@ -57,6 +57,7 @@
       mask="#.##"
       fill-mask="0"
       reverse-fill-mask
+      :rules="employeeAmountRules"
     >
       <template #prepend>
         <q-icon name="attach_money" color="primary" />
@@ -74,6 +75,7 @@ export default {
       employeeInfo,
       employeeNameRules,
       employeeIdentifierRules,
+      employeeAmountRules,
       moneySourceOptions,
       buildEmployee
     } = employeeSubpayStuff();
@@ -81,6 +83,7 @@ export default {
       employeeInfo,
       employeeNameRules,
       employeeIdentifierRules,
+      employeeAmountRules,
       moneySourceOptions,
       buildEmployee
     };

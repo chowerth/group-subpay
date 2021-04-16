@@ -1,13 +1,42 @@
 // The intent is to put all user form data and functionality here
 // Perhaps I should separate this into different services but we'll see how this goes
 // Use named exports to facilitate this
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useQuasar } from "quasar";
 
 function groupSubpayStuff() {
   const numberOfSubpays = ref(1);
 
-  return { numberOfSubpays };
+  const computeNumberOfSubpays = computed(() => {
+    return (numberOfSubpays.value =
+      numberOfSubpays.value < 1 ? 1 : numberOfSubpays.value);
+  });
+
+  const numberOfSubpaysRules = [
+    val => (val && val > 0) || "Please enter at least one subpay",
+    val => Number.isInteger(val) || "Please enter an integer"
+  ];
+
+  function groupSubpaySubmit() {
+    console.log("Submitted Group Subpay");
+  }
+
+  function groupSubpaySubmit() {
+    console.log("Submitted Group Subpay");
+  }
+
+  // I need to manuall call the reset on each component somehow
+  function groupSubpayReset() {
+    console.log("Reset Group Subpay");
+  }
+
+  return {
+    numberOfSubpays,
+    numberOfSubpaysRules,
+    computeNumberOfSubpays,
+    groupSubpaySubmit,
+    groupSubpayReset
+  };
 }
 
 function employerSubpayStuff() {
@@ -63,6 +92,10 @@ function employeeSubpayStuff() {
     //   `The SSN does not have the correct format. It is ${val}`
   ];
 
+  const employeeAmountRules = [
+    val => (val && val > 0) || "Please enter a positive amount"
+  ];
+
   const moneySourceOptions = [
     "Employer Contribution",
     "Employee Contribution",
@@ -82,6 +115,7 @@ function employeeSubpayStuff() {
     employeeInfo,
     employeeNameRules,
     employeeIdentifierRules,
+    employeeAmountRules,
     moneySourceOptions,
     buildEmployee
   };

@@ -1,7 +1,8 @@
 <template>
   <!-- Look into using the mask prop as well -->
-  <div>
+  <div class="row">
     <q-input
+      class="col-xm-12 col-sm-6"
       outlined
       clearable
       hide-bottom-space
@@ -17,6 +18,7 @@
     </q-input>
 
     <q-input
+      class="col-xm-12 col-sm-6"
       outlined
       clearable
       hide-bottom-space
