@@ -4,7 +4,9 @@
       <q-card class="q-pa-md">
         <div class="text-h5">Group Subpay Form</div>
         <q-card-section>
-          <employer-subpay-component></employer-subpay-component>
+          <employer-subpay-component
+            @employerEvent="getEmployerData"
+          ></employer-subpay-component>
           <q-input
             outlined
             debounce="500"
@@ -18,7 +20,10 @@
         <!-- You either need to do parseInt(numberOfSubpays) or use a computed property -->
         <!-- There must be a better way to tell Vue it's an integer...maybe TypeScript support -->
         <q-card-section v-for="n in computeNumberOfSubpays" :key="n">
-          <employee-subpay-component></employee-subpay-component>
+          <employee-subpay-component
+            :subpayId="n"
+            @employeeEvent="getEmployeeData"
+          ></employee-subpay-component>
         </q-card-section>
         <q-card-section>
           <div>
@@ -44,20 +49,26 @@ import { groupSubpayStuff } from "../services/useForm";
 export default {
   components: { EmployerSubpayComponent, EmployeeSubpayComponent },
   name: "GroupSubpayComponent",
-  setup() {
+  setup(props, context) {
+    // TODO: print attributes to see what they are
+    // console.log("Attributes: ", context.attrs);
     const {
       numberOfSubpays,
       numberOfSubpaysRules,
       computeNumberOfSubpays,
       groupSubpaySubmit,
-      groupSubpayReset
+      groupSubpayReset,
+      getEmployeeData,
+      getEmployerData
     } = groupSubpayStuff();
     return {
       numberOfSubpays,
       numberOfSubpaysRules,
       computeNumberOfSubpays,
       groupSubpaySubmit,
-      groupSubpayReset
+      groupSubpayReset,
+      getEmployeeData,
+      getEmployerData
     };
   }
 };

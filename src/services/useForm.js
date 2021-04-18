@@ -2,14 +2,23 @@
 // Perhaps I should separate this into different services but we'll see how this goes
 // Use named exports to facilitate this
 import { ref, computed } from "vue";
-import { useQuasar } from "quasar";
+import { uid, useQuasar } from "quasar";
 
 function groupSubpayStuff() {
   const numberOfSubpays = ref(1);
+  // const groupSubpay = ref({});
+  const employer = ref({});
+  const employeeList = ref([]);
+  const $q = useQuasar();
 
   const computeNumberOfSubpays = computed(() => {
-    return (numberOfSubpays.value =
-      numberOfSubpays.value < 1 ? 1 : numberOfSubpays.value);
+    numberOfSubpays.value =
+      numberOfSubpays.value < 1 ? 1 : numberOfSubpays.value;
+
+    // Resize array with undefined values every time
+    employeeList.value.length = numberOfSubpays.value;
+
+    return numberOfSubpays.value;
   });
 
   const numberOfSubpaysRules = [
@@ -18,24 +27,51 @@ function groupSubpayStuff() {
   ];
 
   function groupSubpaySubmit() {
+    // Save the group subpay to s3?
+    const uuid = uid();
+    const data = {
+      id: uuid, // give item a unique id
+      employer: employer.value,
+      employeeList: employeeList.value
+    };
+    console.log("Employer: ", data);
     console.log("Submitted Group Subpay");
+    $q.notify({
+      progress: true,
+      color: "positive",
+      textColor: "white",
+      icon: "done",
+      message: `Submitted group subpay. Your confirmation ID is: ${uuid}`
+    });
   }
 
-  function groupSubpaySubmit() {
-    console.log("Submitted Group Subpay");
-  }
-
-  // I need to manuall call the reset on each component somehow
+  // TODO: I need to manuall call the reset on each component somehow
   function groupSubpayReset() {
     console.log("Reset Group Subpay");
   }
 
+  // TODO: Perhaps don't put objects but instead plain JSON in list? Or not?
+  function getEmployeeData(eventData) {
+    // console.log("event data: ", eventData);
+    const { id } = eventData;
+    // javascript is 0 indexed
+    const idx = id - 1;
+    employeeList.value[idx] = eventData;
+  }
+
+  function getEmployerData(eventData) {
+    employer.value = eventData;
+  }
+
   return {
     numberOfSubpays,
+    employeeList,
     numberOfSubpaysRules,
     computeNumberOfSubpays,
     groupSubpaySubmit,
-    groupSubpayReset
+    groupSubpayReset,
+    getEmployeeData,
+    getEmployerData
   };
 }
 
@@ -56,7 +92,7 @@ function employerSubpayStuff() {
     const { name, address } = employerObject;
     employerInfo.value.name = name;
     employerInfo.value.address = address;
-    return employerInfo;
+    return employerInfo.value;
   }
   return {
     employerInfo,
@@ -109,8 +145,9 @@ function employeeSubpayStuff() {
     employeeInfo.value.identifier = identifier;
     employeeInfo.value.moneySource = moneySource;
     employeeInfo.value.amount = amount;
-    return emploeeInfo;
+    return emploeeInfo.value;
   }
+
   return {
     employeeInfo,
     employeeNameRules,

@@ -391,6 +391,28 @@
             generate all the sizes for the group subpay logo.
           </p>
         </q-timeline-entry>
+        <q-timeline-entry
+          title="Work On Group Subpay Logic"
+          subtitle="April 16-18, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Worked with Tony trying to figure out how to share backend AWS
+            resources. Put in logic to update subpay form and retrieve data.
+            Determined I don't want to listen to every update event on the input
+            fields but instead just populate the final array table when they
+            submit. However, I don't know how to do this pattern in VueJS yet.
+            For now, I'll just receive async events from child components
+            whenever they update and I'll update the data table that way. I
+            would need to figure out how to "gather" like in MPI distributed
+            message programming. Granted, this is probably an ant-pattern since
+            frontend stuff should really all be async anyway.
+          </p>
+          <p>
+            Got the core UI functionality for the UI finished. Work on
+            integrating with backend now.
+          </p>
+        </q-timeline-entry>
       </q-timeline>
     </div>
   </q-page>

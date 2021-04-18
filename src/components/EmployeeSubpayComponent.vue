@@ -3,6 +3,7 @@
   <div class="row">
     <q-input
       class="col-xs-12 col-sm-3"
+      debounce="500"
       outlined
       clearable
       hide-bottom-space
@@ -13,12 +14,13 @@
       :rules="employeeNameRules"
     >
       <template #prepend>
-        <q-icon name="business" color="primary" />
+        <q-icon name="person" color="primary" />
       </template>
     </q-input>
 
     <q-input
       class="col-xs-12 col-sm-3"
+      debounce="500"
       outlined
       clearable
       hide-bottom-space
@@ -50,6 +52,7 @@
 
     <q-input
       class="col-xs-12 col-sm-3"
+      debounce="500"
       outlined
       clearable
       v-model="employeeInfo.amount"
@@ -67,25 +70,51 @@
 </template>
 
 <script>
+import { onUpdated } from "vue";
 import { employeeSubpayStuff } from "../services/useForm";
 export default {
   name: "EmployeeSubpayComponent",
-  setup() {
+  props: {
+    subpayId: {
+      type: Number,
+      required: true
+    }
+  },
+  // https://v3.vuejs.org/api/options-data.html#emits
+  // TODO: Work on adding validation to event later
+  emits: ["employeeEvent"],
+  setup(props, { emit }) {
     const {
       employeeInfo,
       employeeNameRules,
       employeeIdentifierRules,
       employeeAmountRules,
-      moneySourceOptions,
-      buildEmployee
+      moneySourceOptions
     } = employeeSubpayStuff();
+
+    // emitter helper function for this component
+    function sendEmployeeData() {
+      const newData = Object.assign({ id: props.subpayId }, employeeInfo.value);
+      emit("employeeEvent", newData);
+    }
+
+    // This lifecycle hook seems to get called whenever any of the data in the child
+    // components changes. I can debounce the child input components so they won't emit
+    // events as often and thus this won't either to save cycles
+    onUpdated(() => {
+      sendEmployeeData();
+    });
+
+    // Upon creation send the object data with the id
+    sendEmployeeData();
+
     return {
       employeeInfo,
       employeeNameRules,
       employeeIdentifierRules,
       employeeAmountRules,
       moneySourceOptions,
-      buildEmployee
+      sendEmployeeData
     };
   }
 };
