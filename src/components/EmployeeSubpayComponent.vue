@@ -38,6 +38,7 @@
     </q-input>
 
     <!-- TODO: Play around with select more...it has a TON of options -->
+    <!-- The user must select an option...if they don't it gives me the array back -->
     <q-select
       class="col-xs-12 col-sm-3"
       outlined

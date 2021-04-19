@@ -34,7 +34,7 @@ function groupSubpayStuff() {
       employer: employer.value,
       employeeList: employeeList.value
     };
-    console.log("Employer: ", data);
+    console.log("Group Subpay: ", data);
     console.log("Submitted Group Subpay");
     $q.notify({
       progress: true,
@@ -103,10 +103,16 @@ function employerSubpayStuff() {
 }
 
 function employeeSubpayStuff() {
+  const moneySourceOptions = [
+    "Employer Contribution",
+    "Employee Contribution",
+    "Traditional IRA",
+    "ROTH IRA"
+  ];
   const employeeInfo = ref({
     fullName: "Chris L. Howerth",
     identifier: "12-345-6789",
-    moneySource: ["Employer Contribution"],
+    moneySource: moneySourceOptions[0],
     amount: 250
   });
 
@@ -120,9 +126,7 @@ function employeeSubpayStuff() {
   // TODO: fix so validates 3 groups of numbers separated by -
   // use regular expression?
   const employeeIdentifierRules = [
-    val =>
-      (val && val.length === 11) ||
-      `The SSN must be 9 digits. It is ${val.length}`
+    val => (val && !val.includes("#")) || "The SSN must be 9 digits."
     // val =>
     //   /\d{2}-\d{3}-\d{4}/.test(val) ||
     //   `The SSN does not have the correct format. It is ${val}`
@@ -130,13 +134,6 @@ function employeeSubpayStuff() {
 
   const employeeAmountRules = [
     val => (val && val > 0) || "Please enter a positive amount"
-  ];
-
-  const moneySourceOptions = [
-    "Employer Contribution",
-    "Employee Contribution",
-    "Traditional IRA",
-    "ROTH IRA"
   ];
 
   function buildEmployee(employeeObject) {

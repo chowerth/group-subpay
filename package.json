@@ -10,12 +10,13 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@aws-amplify/cli": "^4.47.1",
-    "@quasar/extras": "^1.10.2",
-    "aws-amplify": "^3.3.26",
+    "@aws-amplify/cli": "^4.48.0",
+    "@quasar/extras": "^1.10.3",
+    "aws-amplify": "^3.3.27",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "quasar": "^2.0.0-beta.11"
+    "quasar": "^2.0.0-beta.11",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@quasar/app": "^3.0.0-beta.10",

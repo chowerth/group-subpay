@@ -410,7 +410,17 @@
           </p>
           <p>
             Got the core UI functionality for the UI finished. Work on
-            integrating with backend now.
+            integrating with backend now. I'm thinking of just using basic S3
+            storage for now.
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="It's Backend Time"
+          subtitle="April 16-18, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Experiment with S3 storage and Amplify.
           </p>
         </q-timeline-entry>
       </q-timeline>

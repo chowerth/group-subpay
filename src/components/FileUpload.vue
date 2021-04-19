@@ -14,7 +14,7 @@
           filled
           use-chips
           style="max-width: 300px"
-          accept=".json"
+          accept=".xlsx"
           max-file-size="1048576"
           max-files="1"
           @rejected="onRejected"
