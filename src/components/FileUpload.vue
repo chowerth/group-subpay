@@ -2,10 +2,15 @@
   <div>
     <q-card class="q-pa-sm">
       <q-card-section class="text-h6 text-weight-bold text-center">
-        <slot> </slot>
+        <q-table
+          title="Subpays"
+          :rows="fileData"
+          :columns="columns"
+          row-key="name"
+        />
       </q-card-section>
       <q-card-section>
-        <pre>{{ fileText }}</pre>
+        <pre>{{ fileData }}</pre>
       </q-card-section>
       <q-card-actions>
         <q-file
@@ -31,8 +36,15 @@ import { fileStuff } from "../services/useFile";
 export default {
   name: "FileUpload",
   setup() {
-    const { file, onRejected, fileText, updateFile } = fileStuff();
-    return { file, onRejected, fileText, updateFile };
+    const {
+      file,
+      columns,
+      rows,
+      onRejected,
+      fileData,
+      updateFile
+    } = fileStuff();
+    return { file, columns, rows, onRejected, fileData, updateFile };
   }
 };
 </script>

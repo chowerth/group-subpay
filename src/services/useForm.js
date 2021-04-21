@@ -4,11 +4,22 @@
 import { ref, computed } from "vue";
 import { uid, useQuasar } from "quasar";
 
+function groupSubpayOptionStuff() {
+  const formOptions = [
+    { label: "Form Input", value: "form" },
+    { label: "Spreadsheet Upload", value: "spreadsheet" }
+  ];
+  const groupSubpaySubmitOption = ref(formOptions[0].value);
+
+  return { groupSubpaySubmitOption, formOptions };
+}
+
 function groupSubpayStuff() {
   const numberOfSubpays = ref(1);
   // const groupSubpay = ref({});
   const employer = ref({});
   const employeeList = ref([]);
+  const subpayOption = ref("");
   const $q = useQuasar();
 
   const computeNumberOfSubpays = computed(() => {
@@ -63,15 +74,22 @@ function groupSubpayStuff() {
     employer.value = eventData;
   }
 
+  function getSubpayOption(eventData) {
+    subpayOption.value = eventData;
+    // console.log("Option = ", subpayOption.value);
+  }
+
   return {
     numberOfSubpays,
     employeeList,
+    subpayOption,
     numberOfSubpaysRules,
     computeNumberOfSubpays,
     groupSubpaySubmit,
     groupSubpayReset,
     getEmployeeData,
-    getEmployerData
+    getEmployerData,
+    getSubpayOption
   };
 }
 
@@ -226,5 +244,6 @@ export {
   formTwoStuff,
   employerSubpayStuff,
   employeeSubpayStuff,
-  groupSubpayStuff
+  groupSubpayStuff,
+  groupSubpayOptionStuff
 };

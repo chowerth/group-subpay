@@ -413,6 +413,14 @@
             integrating with backend now. I'm thinking of just using basic S3
             storage for now.
           </p>
+          <p>
+            Got the basics down for file upload! Using sheetJS and the quasar
+            QFile component the user can select a spreadsheet and I'll convert
+            their data to JSON. From here we could do schema validation/parsing
+            etc and allow them to upload group subpays via spreadsheet instead
+            of using the UI. In the future we could expose an API endpoint tha
+            would allow them to programmatically submit group subpays.
+          </p>
         </q-timeline-entry>
         <q-timeline-entry
           title="It's Backend Time"

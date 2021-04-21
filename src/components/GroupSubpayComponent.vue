@@ -1,6 +1,13 @@
 <template>
   <div>
-    <q-form @submit="groupSubpaySubmit" @reset="groupSubpayReset">
+    <group-subpay-options-component
+      @subpayOptionEvent="getSubpayOption"
+    ></group-subpay-options-component>
+    <q-form
+      v-if="subpayOption === 'form'"
+      @submit="groupSubpaySubmit"
+      @reset="groupSubpayReset"
+    >
       <q-card class="q-pa-md">
         <div class="text-h5">Group Subpay Form</div>
         <q-card-section>
@@ -39,6 +46,13 @@
         </q-card-section>
       </q-card>
     </q-form>
+    <q-form
+      v-if="subpayOption === 'spreadsheet'"
+      @submit="groupSubpaySubmit"
+      @reset="groupSubpayReset"
+    >
+      <file-upload></file-upload>
+    </q-form>
   </div>
 </template>
 
@@ -46,29 +60,40 @@
 import EmployeeSubpayComponent from "./EmployeeSubpayComponent.vue";
 import EmployerSubpayComponent from "./EmployerSubpayComponent.vue";
 import { groupSubpayStuff } from "../services/useForm";
+import GroupSubpayOptionsComponent from "./GroupSubpayOptionsComponent.vue";
+import FileUpload from "./FileUpload.vue";
 export default {
-  components: { EmployerSubpayComponent, EmployeeSubpayComponent },
+  components: {
+    EmployerSubpayComponent,
+    EmployeeSubpayComponent,
+    GroupSubpayOptionsComponent,
+    FileUpload
+  },
   name: "GroupSubpayComponent",
   setup(props, context) {
     // TODO: print attributes to see what they are
     // console.log("Attributes: ", context.attrs);
     const {
+      subpayOption,
       numberOfSubpays,
       numberOfSubpaysRules,
       computeNumberOfSubpays,
       groupSubpaySubmit,
       groupSubpayReset,
       getEmployeeData,
-      getEmployerData
+      getEmployerData,
+      getSubpayOption
     } = groupSubpayStuff();
     return {
+      subpayOption,
       numberOfSubpays,
       numberOfSubpaysRules,
       computeNumberOfSubpays,
       groupSubpaySubmit,
       groupSubpayReset,
       getEmployeeData,
-      getEmployerData
+      getEmployerData,
+      getSubpayOption
     };
   }
 };
