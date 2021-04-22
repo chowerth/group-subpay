@@ -5,10 +5,52 @@ import { ref, computed } from "vue";
 import { uid, useQuasar } from "quasar";
 import { Storage } from "boot/amplify";
 
+function displayInvoices() {
+  const invoiceList = ref([]);
+  const $q = useQuasar();
+
+  async function getInvoices() {
+    try {
+      invoiceList.value = await Storage.list("");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function presentInvoice(eventData) {
+    // console.log(eventData.target.innerText);
+    const bucketKey = eventData.target.innerText;
+    console.log(bucketKey);
+    const result = await Storage.get(bucketKey, { download: true });
+    const groupSubpayText = await result.Body.text();
+    console.log(groupSubpayText);
+    showSubpay(groupSubpayText);
+  }
+
+  function showSubpay(groupSubpay) {
+    $q.dialog({
+      title: "Group Subpay Information",
+      message: groupSubpay
+    })
+      .onOk(() => {
+        // console.log('OK')
+      })
+      .onCancel(() => {
+        // console.log('Cancel')
+      })
+      .onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      });
+  }
+
+  return { invoiceList, getInvoices, presentInvoice };
+}
+
 function groupSubpayOptionStuff() {
   const formOptions = [
     { label: "Form Input", value: "form" },
-    { label: "Spreadsheet Upload", value: "spreadsheet" }
+    { label: "Spreadsheet Upload", value: "spreadsheet" },
+    { label: "Invoices", value: "invoices" }
   ];
   const groupSubpaySubmitOption = ref(formOptions[0].value);
 
@@ -253,6 +295,7 @@ function formTwoStuff() {
 }
 
 export {
+  displayInvoices,
   formOneStuff,
   formTwoStuff,
   employerSubpayStuff,

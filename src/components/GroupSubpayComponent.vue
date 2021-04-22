@@ -49,6 +49,11 @@
     <q-form v-if="subpayOption === 'spreadsheet'" @submit="groupSubpaySubmit">
       <file-upload></file-upload>
     </q-form>
+    <q-card v-if="subpayOption === 'invoices'">
+      <q-card-section>
+        <display-subpays-component></display-subpays-component>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
@@ -58,12 +63,14 @@ import EmployerSubpayComponent from "./EmployerSubpayComponent.vue";
 import { groupSubpayStuff } from "../services/useForm";
 import GroupSubpayOptionsComponent from "./GroupSubpayOptionsComponent.vue";
 import FileUpload from "./FileUpload.vue";
+import DisplaySubpaysComponent from "./DisplaySubpaysComponent.vue";
 export default {
   components: {
     EmployerSubpayComponent,
     EmployeeSubpayComponent,
     GroupSubpayOptionsComponent,
-    FileUpload
+    FileUpload,
+    DisplaySubpaysComponent
   },
   name: "GroupSubpayComponent",
   setup(props, context) {
