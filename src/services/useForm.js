@@ -12,6 +12,7 @@ function displayInvoices() {
   async function getInvoices() {
     try {
       invoiceList.value = await Storage.list("");
+      // console.log("INVOICES = ", invoiceList.value);
     } catch (err) {
       console.log(err);
     }
@@ -22,6 +23,7 @@ function displayInvoices() {
     const bucketKey = eventData.target.innerText;
     console.log(bucketKey);
     const result = await Storage.get(bucketKey, { download: true });
+    console.log("result = ", result);
     const groupSubpayText = await result.Body.text();
     console.log(groupSubpayText);
     showSubpay(groupSubpayText);

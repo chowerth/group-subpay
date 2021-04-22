@@ -14,6 +14,9 @@
         v-ripple
       >
         <q-item-section>{{ invoice.key }}</q-item-section>
+        <q-item-section
+          >Last Modified: {{ invoice.lastModified }}</q-item-section
+        >
       </q-item>
     </q-list>
   </q-card>

@@ -452,7 +452,8 @@
             have public access for guests. 5) For some reason amplify keeps
             thinking the lambda layer is being updated and I need to update my
             functions to pick up the latest layer version...I don't know why it
-            thinks this.
+            thinks this. 6) The lastModified date on the invoices isn't
+            displaying correctly
           </p>
           <p>
             The amplify cli and cloudformation were really causing me problems
