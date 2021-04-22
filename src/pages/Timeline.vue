@@ -449,7 +449,10 @@
             buttons work right now. I haven't implemented them. 3) Restrict
             allows origins to be just my app. Right now it's "*" for everything.
             4) Restrict permissions on S3 bucket for acess. Right now I just
-            have public access for guests.
+            have public access for guests. 5) For some reason amplify keeps
+            thinking the lambda layer is being updated and I need to update my
+            functions to pick up the latest layer version...I don't know why it
+            thinks this.
           </p>
           <p>
             The amplify cli and cloudformation were really causing me problems
