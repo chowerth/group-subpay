@@ -48,7 +48,6 @@ function displayInvoices() {
 
 function groupSubpayOptionStuff() {
   const formOptions = [
-    { label: "Profile Selection", value: "profile" },
     { label: "Form Input", value: "form" },
     { label: "Spreadsheet Upload", value: "spreadsheet" },
     { label: "Invoices", value: "invoices" }
