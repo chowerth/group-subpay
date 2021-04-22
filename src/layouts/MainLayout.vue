@@ -28,6 +28,14 @@
             <q-item-label>Main Page</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/profiles" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="dashboard" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Profiles</q-item-label>
+          </q-item-section>
+        </q-item>        
         <q-item to="/groupsubpay" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="dashboard" />
