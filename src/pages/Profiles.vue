@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="q-pa-md">
-      <q-markup-table flat bordered>
+      <q-table grid flat bordered>
         <thead class="bg-blue">
           <tr>
             <th colspan="6">
@@ -36,7 +36,7 @@
             <td class="text-right">{{ item.sources }}</td>
           </tr>
         </tbody>
-      </q-markup-table>
+      </q-table>
     </div>
   </q-page>
 </template>
