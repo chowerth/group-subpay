@@ -47,6 +47,14 @@ function groupSubpayStuff() {
     };
     console.log("Group Subpay: ", data);
     console.log("Submitted Group Subpay");
+
+    // // log this stuff to amplify storage S3
+    // try {
+    // // const s3result = await Storage.put()
+    // } catch(err) {
+
+    // }
+
     $q.notify({
       progress: true,
       color: "positive",

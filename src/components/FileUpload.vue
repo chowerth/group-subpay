@@ -9,10 +9,10 @@
           row-key="name"
         />
       </q-card-section>
-      <q-card-section>
+      <!-- <q-card-section>
         <pre>{{ fileData }}</pre>
-      </q-card-section>
-      <q-card-actions>
+      </q-card-section> -->
+      <q-card-actions align="around">
         <q-file
           v-model="file"
           label="Upload Group Subpay file"
@@ -25,6 +25,8 @@
           @rejected="onRejected"
           @update:model-value="updateFile"
         />
+
+        <q-btn label="Submit Group Subpay" type="submit" color="primary" />
       </q-card-actions>
     </q-card>
   </div>

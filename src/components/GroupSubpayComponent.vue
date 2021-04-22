@@ -46,11 +46,7 @@
         </q-card-section>
       </q-card>
     </q-form>
-    <q-form
-      v-if="subpayOption === 'spreadsheet'"
-      @submit="groupSubpaySubmit"
-      @reset="groupSubpayReset"
-    >
+    <q-form v-if="subpayOption === 'spreadsheet'" @submit="groupSubpaySubmit">
       <file-upload></file-upload>
     </q-form>
   </div>

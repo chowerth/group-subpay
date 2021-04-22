@@ -46,7 +46,8 @@ function fileStuff() {
     {
       name: "Amount",
       align: "left",
-      // label: "Amount", --> this also works
+      label: "Amount",
+      // field: Amount --> this also works
       field: row => row["Amount"]
     }
   ];

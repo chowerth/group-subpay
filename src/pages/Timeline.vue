@@ -423,12 +423,38 @@
           </p>
         </q-timeline-entry>
         <q-timeline-entry
-          title="It's Backend Time"
+          title="Even More Frontend"
           subtitle="April 16-18, 2021 Author: Chris"
           icon="build"
         >
           <p>
-            Experiment with S3 storage and Amplify.
+            Combined the web app input form with spreadsheet upload
+            functionality.
+          </p>
+          <p>
+            I really need to clean up my log :) And I really need to get that S3
+            bucket stuff set up!
+          </p>
+        </q-timeline-entry>
+        <q-timeline-entry
+          title="Bug List and Backend"
+          subtitle="April 16-18, 2021 Author: Chris"
+          icon="build"
+        >
+          <p>
+            Some notable bugs to work on: 1) I currently don't have the file
+            upload populating the employees list or employer object. Right now
+            it just displays within the table so I can't do an S3 bucket submit
+            until I put the logic to transfer that over. 2) None of the reset
+            buttons work right now. I haven't implemented them. 3) Restrict
+            allows origins to be just my app. Right now it's "*" for everything.
+            4) Restrict permissions on S3 bucket for acess. Right now I just
+            have public access for guests.
+          </p>
+          <p>
+            The amplify cli and cloudformation were really causing me problems
+            with storage and auth. We'll see if I can solve it in time for the
+            presentation lol...
           </p>
         </q-timeline-entry>
       </q-timeline>
