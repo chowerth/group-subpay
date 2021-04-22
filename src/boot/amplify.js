@@ -1,6 +1,6 @@
 // import something here
 // Use this boot file to reference any AWS API resources?
-import Amplify, { API } from "aws-amplify";
+import Amplify, { API, Storage } from "aws-amplify";
 import awsconfig from "../aws-exports";
 
 Amplify.configure(awsconfig);
@@ -11,4 +11,4 @@ export default async (/* { app, router, ... } */) => {
   // something to do
 };
 
-export { API };
+export { API, Storage };

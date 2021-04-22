@@ -1,57 +1,132 @@
 {
-    "function": {
-        "resolvecors": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "axioslayer",
-                    "attributes": [
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "axioslayer": {
-            "runtimes": [
-                {
-                    "value": "nodejs",
-                    "name": "NodeJS",
-                    "layerExecutablePath": "nodejs\\node_modules",
-                    "cloudTemplateValue": "nodejs12.x"
-                }
-            ],
-            "layerVersionMap": {
-                "1": {
-                    "permissions": [
-                        {
-                            "type": "private"
-                        }
-                    ]
-                }
-            },
-            "providerPlugin": "awscloudformation",
-            "service": "LambdaLayer",
-            "build": true
+  "function": {
+    "resolvecors": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "axioslayer",
+          "attributes": [
+            "Arn"
+          ]
         }
+      ]
     },
-    "api": {
-        "corsapi": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "resolvecors",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
+    "axioslayer": {
+      "runtimes": [
+        {
+          "value": "nodejs",
+          "name": "NodeJS",
+          "layerExecutablePath": "nodejs\\node_modules",
+          "cloudTemplateValue": "nodejs12.x"
         }
+      ],
+      "layerVersionMap": {
+        "1": {
+          "permissions": [
+            {
+              "type": "private"
+            }
+          ]
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     },
-    "auth": {}
+    "companyLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "company",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "payeeLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "payee",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    }
+  },
+  "api": {
+    "corsapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "resolvecors",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "company": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "companyLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "payeeApi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "payeeLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
+  },
+  "storage": {
+    "company": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "payee": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  }
 }

@@ -3,6 +3,7 @@
 // Use named exports to facilitate this
 import { ref, computed } from "vue";
 import { uid, useQuasar } from "quasar";
+import { Storage } from "boot/amplify";
 
 function groupSubpayOptionStuff() {
   const formOptions = [
@@ -49,11 +50,15 @@ function groupSubpayStuff() {
     console.log("Submitted Group Subpay");
 
     // // log this stuff to amplify storage S3
-    // try {
-    // // const s3result = await Storage.put()
-    // } catch(err) {
 
-    // }
+    (async function() {
+      try {
+        const s3result = await Storage.put(uuid, data);
+        console.log(s3result);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
 
     $q.notify({
       progress: true,

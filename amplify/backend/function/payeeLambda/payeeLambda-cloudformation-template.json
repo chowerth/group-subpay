@@ -7,18 +7,22 @@
       "Default": "NONE",
       "Description": " Schedule Expression"
     },
-    "env": {
+    "deploymentBucketName": {
       "Type": "String"
     },
-    "functionaxioslayerArn": {
-      "Type": "String",
-      "Default": "functionaxioslayerArn"
-    },
-    "deploymentBucketName": {
+    "env": {
       "Type": "String"
     },
     "s3Key": {
       "Type": "String"
+    },
+    "storagepayeeName": {
+      "Type": "String",
+      "Default": "storagepayeeName"
+    },
+    "storagepayeeArn": {
+      "Type": "String",
+      "Default": "storagepayeeArn"
     }
   },
   "Conditions": {
@@ -39,16 +43,24 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "resolvecors",
+            "payeeLambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "resolvecors",
+                  "payeeLambda",
                   "-",
                   {
                     "Ref": "env"
@@ -74,21 +86,9 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs12.x",
-        "Layers": [
-          {
-            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:axioslayer:1"
-          }
-        ],
-        "Timeout": "25",
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        }
+        "Runtime": "nodejs14.x",
+        "Layers": [],
+        "Timeout": "25"
       }
     },
     "LambdaExecutionRole": {
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "groupsubpayLambdaRoleb7c8016e",
+            "groupsubpayLambdaRolea4a6d220",
             {
               "Fn::Join": [
                 "",
                 [
-                  "groupsubpayLambdaRoleb7c8016e",
+                  "groupsubpayLambdaRolea4a6d220",
                   "-",
                   {
                     "Ref": "env"
@@ -168,6 +168,34 @@
                   }
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagepayeeArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagepayeeArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

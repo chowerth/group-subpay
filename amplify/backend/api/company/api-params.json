@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/companies/{id}",
+            "lambdaFunction": "companyLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/companies/*"
+        }
+    ],
+    "resourceName": "company",
+    "apiName": "company",
+    "functionArns": [
+        {
+            "lambdaFunction": "companyLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-groupsubpay-dev-20840-authRole",
+        "unAuthRoleName": "amplify-groupsubpay-dev-20840-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "companyLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

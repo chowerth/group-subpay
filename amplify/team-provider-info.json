@@ -1,21 +1,40 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-groupsubpay-dev-20840-authRole",
-            "UnauthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
-            "UnauthRoleName": "amplify-groupsubpay-dev-20840-unauthRole",
-            "StackName": "amplify-groupsubpay-dev-20840",
-            "StackId": "arn:aws:cloudformation:us-east-2:781642778795:stack/amplify-groupsubpay-dev-20840/09528120-98fa-11eb-9d69-0ae9bf5eae56",
-            "AmplifyAppId": "du23tqvv025zb"
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-groupsubpay-dev-20840-authRole",
+      "UnauthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::781642778795:role/amplify-groupsubpay-dev-20840-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+      "UnauthRoleName": "amplify-groupsubpay-dev-20840-unauthRole",
+      "StackName": "amplify-groupsubpay-dev-20840",
+      "StackId": "arn:aws:cloudformation:us-east-2:781642778795:stack/amplify-groupsubpay-dev-20840/09528120-98fa-11eb-9d69-0ae9bf5eae56",
+      "AmplifyAppId": "du23tqvv025zb"
+    },
+    "categories": {
+      "auth": {
+        "groupsubpaydaab1a21": {},
+        "groupsubpayc9dda26e": {},
+        "groupsubpay23bd07aa": {}
+      },
+      "function": {
+        "resolvecors": {
+          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+          "s3Key": "amplify-builds/resolvecors-7670305a4151586a4d7a-build.zip"
         },
-        "categories": {
-            "auth": {
-                "groupsubpaydaab1a21": {},
-                "groupsubpayc9dda26e": {}
-            }
+        "axioslayer": {
+          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+          "s3Key": "amplify-builds/axioslayer-build.zip"
+        },
+        "companyLambda": {
+          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+          "s3Key": "amplify-builds/companyLambda-383669686558584f5966-build.zip"
+        },
+        "payeeLambda": {
+          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
+          "s3Key": "amplify-builds/payeeLambda-54445233684858544774-build.zip"
         }
+      }
     }
+  }
 }
