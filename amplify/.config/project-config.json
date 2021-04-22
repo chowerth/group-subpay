@@ -1,6 +1,6 @@
 {
   "projectName": "groupsubpay",
-  "version": "3.0",
+  "version": "3.1",
   "frontend": "javascript",
   "javascript": {
     "framework": "none",
@@ -11,5 +11,7 @@
       "StartCommand": "quasar serve dist/spa"
     }
   },
-  "providers": ["awscloudformation"]
+  "providers": [
+    "awscloudformation"
+  ]
 }

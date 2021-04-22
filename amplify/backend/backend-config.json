@@ -127,6 +127,18 @@
     "payee": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "subpaystorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "auth": {
+    "groupsubpaye32fa81d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
     }
   }
 }
