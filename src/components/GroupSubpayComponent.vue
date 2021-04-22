@@ -4,6 +4,15 @@
       @subpayOptionEvent="getSubpayOption"
     ></group-subpay-options-component>
     <q-form
+      v-if="subpayOption === 'profile'"
+    >
+      <q-card-section>
+        <q-page>
+          
+        </q-page>
+      </q-card-section>
+    </q-form>      
+    <q-form
       v-if="subpayOption === 'form'"
       @submit="groupSubpaySubmit"
       @reset="groupSubpayReset"

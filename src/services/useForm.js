@@ -7,6 +7,7 @@ import { Storage } from "boot/amplify";
 
 function groupSubpayOptionStuff() {
   const formOptions = [
+    { label: "Profile Selection", value: "profile" },
     { label: "Form Input", value: "form" },
     { label: "Spreadsheet Upload", value: "spreadsheet" }
   ];
