@@ -1,5 +1,0 @@
-{
-    "tableName": "payee",
-    "partitionKeyName": "payeeId",
-    "partitionKeyType": "N"
-}

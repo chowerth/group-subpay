@@ -21,19 +21,11 @@
       "function": {
         "resolvecors": {
           "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
-          "s3Key": "amplify-builds/resolvecors-7670305a4151586a4d7a-build.zip"
+          "s3Key": "amplify-builds/resolvecors-785a6335384569734132-build.zip"
         },
         "axioslayer": {
           "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
           "s3Key": "amplify-builds/axioslayer-build.zip"
-        },
-        "companyLambda": {
-          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
-          "s3Key": "amplify-builds/companyLambda-383669686558584f5966-build.zip"
-        },
-        "payeeLambda": {
-          "deploymentBucketName": "amplify-groupsubpay-dev-20840-deployment",
-          "s3Key": "amplify-builds/payeeLambda-54445233684858544774-build.zip"
         }
       }
     }
