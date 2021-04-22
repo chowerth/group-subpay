@@ -53,17 +53,5 @@
 			]
 		}
 	},
-	"auth": {
-		"groupsubpaydaab1a21": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	},
-	"storage": {
-		"subpaystorage": {
-			"service": "S3",
-			"providerPlugin": "awscloudformation"
-		}
-	}
+	"auth": {}
 }
